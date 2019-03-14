@@ -45,7 +45,7 @@ class MealTableViewController: UITableViewController {
 
         cell.nameLabel.text = meal.name
         cell.photoImageView.image = meal.photo
-        cell.ratingControl.rating = meal.rating
+        cell.ratingControl.rating = Double(meal.rating)
 
         return cell
     }

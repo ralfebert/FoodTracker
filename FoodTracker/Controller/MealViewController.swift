@@ -3,6 +3,7 @@
 import FoodTrackerModel
 import os.log
 import UIKit
+import Cosmos
 
 class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -10,7 +11,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
-    @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var ratingControl: CosmosView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
     /*
@@ -30,7 +31,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             navigationItem.title = meal.name
             self.nameTextField.text = meal.name
             self.photoImageView.image = meal.photo
-            self.ratingControl.rating = meal.rating
+            self.ratingControl.rating = Double(meal.rating)
         }
 
         // Enable the Save button only if the text field has a valid Meal name.
@@ -107,7 +108,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         let rating = ratingControl.rating
 
         // Set the meal to be passed to MealTableViewController after the unwind segue.
-        meal = Meal(name: name, photo: photo, rating: rating)
+        meal = Meal(name: name, photo: photo, rating: Int(rating))
     }
 
     // MARK: Actions

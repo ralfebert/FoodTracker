@@ -1,6 +1,7 @@
 // Copyright © 2016 Apple Inc.; 2019 Ralf Ebert; see LICENSE.txt
 
 import UIKit
+import Cosmos
 
 class MealTableViewCell: UITableViewCell {
 
@@ -8,6 +9,6 @@ class MealTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
-    @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var ratingControl: CosmosView!
 
 }
