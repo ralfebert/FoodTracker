@@ -1,5 +1,6 @@
 // Copyright © 2016 Apple Inc.; 2019 Ralf Ebert; see LICENSE.txt
 
+import FoodTrackerModel
 import os.log
 import UIKit
 

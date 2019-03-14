@@ -3,13 +3,13 @@
 import os.log
 import UIKit
 
-class Meal: NSObject, NSCoding {
+public class Meal: NSObject, NSCoding {
 
     // MARK: Properties
 
-    var name: String
-    var photo: UIImage?
-    var rating: Int
+    public var name: String
+    public var photo: UIImage?
+    public var rating: Int
 
     // MARK: Archiving Paths
 
@@ -26,7 +26,7 @@ class Meal: NSObject, NSCoding {
 
     // MARK: Initialization
 
-    init?(name: String, photo: UIImage?, rating: Int) {
+    public init?(name: String, photo: UIImage?, rating: Int) {
 
         // The name must not be empty
         guard !name.isEmpty else {
@@ -52,13 +52,13 @@ class Meal: NSObject, NSCoding {
 
     // MARK: NSCoding
 
-    func encode(with aCoder: NSCoder) {
+    public func encode(with aCoder: NSCoder) {
         aCoder.encode(self.name, forKey: PropertyKey.name)
         aCoder.encode(self.photo, forKey: PropertyKey.photo)
         aCoder.encode(self.rating, forKey: PropertyKey.rating)
     }
 
-    required convenience init?(coder aDecoder: NSCoder) {
+    public required convenience init?(coder aDecoder: NSCoder) {
 
         // The name is required. If we cannot decode a name string, the initializer should fail.
         guard let name = aDecoder.decodeObject(forKey: PropertyKey.name) as? String else {
@@ -75,4 +75,21 @@ class Meal: NSObject, NSCoding {
         self.init(name: name, photo: photo, rating: rating)
 
     }
+
+    // MARK: - Loading and saving
+
+    public static func saveMeals(meals : [Meal]) {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("Meals successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save meals...", log: OSLog.default, type: .error)
+        }
+    }
+
+    public static func loadMeals() -> [Meal]? {
+        os_log("Loading meals from %{PUBLIC}@", log: .default, type: .debug, Meal.ArchiveURL.path)
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Meal.ArchiveURL.path) as? [Meal]
+    }
+
 }

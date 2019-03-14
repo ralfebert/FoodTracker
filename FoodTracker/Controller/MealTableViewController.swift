@@ -1,5 +1,6 @@
 // Copyright © 2016 Apple Inc.; 2019 Ralf Ebert; see LICENSE.txt
 
+import FoodTrackerModel
 import os.log
 import UIKit
 
@@ -16,14 +17,14 @@ class MealTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem
 
         // Load any saved meals, otherwise load sample data.
-        if let savedMeals = loadMeals() {
+        if let savedMeals = Meal.loadMeals() {
             self.meals += savedMeals
         } else {
             // Load the sample data.
             self.loadSampleMeals()
         }
     }
-    
+
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,7 +61,7 @@ class MealTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             self.meals.remove(at: indexPath.row)
-            self.saveMeals()
+            Meal.saveMeals(meals: self.meals)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -118,7 +119,7 @@ class MealTableViewController: UITableViewController {
             }
 
             // Save the meals.
-            self.saveMeals()
+            Meal.saveMeals(meals: self.meals)
         }
     }
 
@@ -143,19 +144,6 @@ class MealTableViewController: UITableViewController {
         }
 
         self.meals += [meal1, meal2, meal3]
-    }
-
-    private func saveMeals() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL.path)
-        if isSuccessfulSave {
-            os_log("Meals successfully saved.", log: OSLog.default, type: .debug)
-        } else {
-            os_log("Failed to save meals...", log: OSLog.default, type: .error)
-        }
-    }
-
-    private func loadMeals() -> [Meal]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Meal.ArchiveURL.path) as? [Meal]
     }
 
 }

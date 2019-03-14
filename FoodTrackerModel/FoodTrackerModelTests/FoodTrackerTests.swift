@@ -1,6 +1,6 @@
 // Copyright © 2016 Apple Inc.; 2019 Ralf Ebert; see LICENSE.txt
 
-@testable import FoodTracker
+@testable import FoodTrackerModel
 import XCTest
 
 class FoodTrackerTests: XCTestCase {
