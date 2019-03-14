@@ -85,16 +85,11 @@
 		936B4B801DB54E8F0090E3EE /* FoodTracker */ = {
 			isa = PBXGroup;
 			children = (
-				936B4B811DB54E8F0090E3EE /* AppDelegate.swift */,
-				936B4B831DB54E8F0090E3EE /* MealViewController.swift */,
-				93E91EF01DCA8F83003E4C01 /* RatingControl.swift */,
-				939722381DD4ED9800ACC1D0 /* Meal.swift */,
-				93B36E621DDB8D3A00334F4A /* MealTableViewCell.swift */,
-				93B36E641DDBE63500334F4A /* MealTableViewController.swift */,
-				936B4B851DB54E8F0090E3EE /* Main.storyboard */,
-				936B4B881DB54E8F0090E3EE /* Assets.xcassets */,
-				936B4B8A1DB54E8F0090E3EE /* LaunchScreen.storyboard */,
-				936B4B8D1DB54E8F0090E3EE /* Info.plist */,
+				BFED90EE223AA25600C2C1D2 /* App */,
+				BFED90ED223AA24E00C2C1D2 /* Assets */,
+				BFED90EB223AA21300C2C1D2 /* Controller */,
+				BFED90EA223AA20600C2C1D2 /* Model */,
+				BFED90EC223AA21A00C2C1D2 /* View */,
 			);
 			path = FoodTracker;
 			sourceTree = "<group>";
@@ -106,6 +101,51 @@
 				936B4B981DB54E8F0090E3EE /* Info.plist */,
 			);
 			path = FoodTrackerTests;
+			sourceTree = "<group>";
+		};
+		BFED90EA223AA20600C2C1D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				939722381DD4ED9800ACC1D0 /* Meal.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BFED90EB223AA21300C2C1D2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				936B4B831DB54E8F0090E3EE /* MealViewController.swift */,
+				93B36E641DDBE63500334F4A /* MealTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BFED90EC223AA21A00C2C1D2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93E91EF01DCA8F83003E4C01 /* RatingControl.swift */,
+				93B36E621DDB8D3A00334F4A /* MealTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BFED90ED223AA24E00C2C1D2 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				936B4B851DB54E8F0090E3EE /* Main.storyboard */,
+				936B4B881DB54E8F0090E3EE /* Assets.xcassets */,
+				936B4B8A1DB54E8F0090E3EE /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		BFED90EE223AA25600C2C1D2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				936B4B811DB54E8F0090E3EE /* AppDelegate.swift */,
+				936B4B8D1DB54E8F0090E3EE /* Info.plist */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,7 +415,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = FoodTracker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FoodTracker/App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.FoodTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -387,7 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = FoodTracker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FoodTracker/App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.FoodTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
